@@ -35,10 +35,9 @@ for(var irow=0;irow<nrow;irow++) {
 if((nrow*ncol)%5!=0) tilt("BAD DIMENSION");
 
 var shapes = [];
-var names = [];
 load_shapes();
 
-var ireg =-1;
+var ireg =-1;	// current region id
 
 run();
 
@@ -46,35 +45,22 @@ function run() {
 
 	ireg++;
 
-	debug("run "+ireg);
-
-	// find free cell
 	var c = find_free_cell();
 	if(!c) {
 			display();		
 			process.exit(0);
-		return;
 	}
 
 	var irow = c[0];
 	var icol = c[1];
 
-	debug('  test at ',irow,icol);
 	for(var i=0;i<shapes.length;i++) {
 		var shape = shapes[i];
-		debug('   trying shape ',i);
 		if(!fit(shape,irow,icol)) continue;	
-		debug('              fit');
 		set_region(shape,irow,icol,ireg);
 
-		if(check_clues(shape,irow,icol)) {
-			debug('              clues ok');
-			debug('            recursive run...');
+		if(check_clues(shape,irow,icol))
 			run();
-		}
-		else {
-			debug('              clues NOT OK');
-		}
 
 		set_region(shape,irow,icol,-1);	
 	}
@@ -192,18 +178,18 @@ function load_shapes() {
 		'ghijklmno'
 	]
 
-	f(0,0,1,0,2,0,3,0,4,0,'I');		// I
-	f(0,0,1,0,1,1,2,1,3,1,'N');		// N
-	f(0,0,0,1,0,2,1,0,1,2,'U');		// U
-	f(0,0,0,1,1,0,1,-1,2,-1,'W');	// W
-	f(0,0,1,0,1,1,1,2,2,2,'Z');		// Z
-	f(0,0,1,-1,1,0,1,1,1,2,'Y');	// Y
-	f(0,0,1,-2,1,-1,1,0,2,0,'T');	// T
-	f(0,0,1,0,1,1,1,2,2,1,'F');		// F
-	f(0,0,1,0,2,0,3,0,3,1,'L');		// L
-	f(0,0,0,1,1,0,1,1,1,2,'P');		// P
-	f(0,0,1,0,2,-2,2,-1,2,0,'V');	// V
-	f(0,0,1,-1,1,0,1,1,2,0,'X');	// X
+	f(0,0,1,0,2,0,3,0,4,0,'I');
+	f(0,0,1,0,1,1,2,1,3,1,'N');
+	f(0,0,0,1,0,2,1,0,1,2,'U');
+	f(0,0,0,1,1,0,1,-1,2,-1,'W');
+	f(0,0,1,0,1,1,1,2,2,2,'Z');	
+	f(0,0,1,-1,1,0,1,1,1,2,'Y');
+	f(0,0,1,-2,1,-1,1,0,2,0,'T');
+	f(0,0,1,0,1,1,1,2,2,1,'F');	
+	f(0,0,1,0,2,0,3,0,3,1,'L');
+	f(0,0,0,1,1,0,1,1,1,2,'P');
+	f(0,0,1,0,2,-2,2,-1,2,0,'V');
+	f(0,0,1,-1,1,0,1,1,2,0,'X');
 
 
 	function f(...a) {
@@ -258,6 +244,7 @@ function load_shapes() {
 		add_shape(b);
 
 		function add_shape(b) {
+			// normalize
 			var minr = 10;
 			var minc = 10;
 			for(var i=0;i<b.length;i+=2) {
