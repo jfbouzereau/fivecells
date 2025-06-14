@@ -42,3 +42,7 @@ A A B D D D
 E E E E D D 
 E F F F F F 
 ``` 
+
+### Puzzles
+Some puzzles can be found here:  
+[https://sortedpuzzles.com/five-cells-5cel-1-001p/](https://sortedpuzzles.com/five-cells-5cel-1-001p/)
