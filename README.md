@@ -34,4 +34,11 @@ To execute, run the command :
 node fivecells.js puzzle.txt
 ```
 
-
+It will produce the following output :  
+```
+A A B C C C 
+A B B B C C 
+A A B D D D 
+E E E E D D 
+E F F F F F 
+``` 
