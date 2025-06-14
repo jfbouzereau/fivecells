@@ -42,6 +42,8 @@ A A B D D D
 E E E E D D 
 E F F F F F 
 ``` 
+corresponding to the solution  
+[](solution.jpg)  
 
 ### Puzzles
 Some puzzles can be found here:  
