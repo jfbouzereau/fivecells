@@ -1,4 +1,3 @@
-pro>cat fivecells.js
 const fs = require('fs');
 
 const ALPHABET= ".ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -307,3 +306,5 @@ function debug(...a) {
 	return false;
 	console.log(...a);
 }
+
+
