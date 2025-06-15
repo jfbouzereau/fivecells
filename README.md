@@ -47,4 +47,4 @@ corresponding to the solution
 
 ### Puzzles
 Some puzzles can be found here:  
-[](https://sortedpuzzles.com/tag/five-cells/)
+[https://sortedpuzzles.com/tag/five-cells/](https://sortedpuzzles.com/tag/five-cells/)
